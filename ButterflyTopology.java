@@ -2,17 +2,18 @@ public class ButterflyTopology{
   Processor processorsArray[];
   int rank;
   int numOfProcessor;
-  Switch topologySwitchs[][] = new Switch[rank][numOfProcessor];
+  Switch topologySwitchs[][]; 
   
   
   public ButterflyTopology(int n){
   	numOfProcessor = n;
-    int rank = log2(n) + 1; // Assuming n to be the power of 2
-    
+    rank = log2(n) + 1; // Assuming n to be the power of 2
+    processorsArray = new Processor[numOfProcessor];
+    topologySwitchs = new Switch[rank][numOfProcessor];
   	
     for(int i = 0; i < numOfProcessor; i++){
     	// creation of process and adding it into the array
-      Processor proc = new Processor(i);
+      Processor proc = new Processor(i, rank);
       processorsArray[i] = proc;
     }
     
@@ -25,11 +26,12 @@ public class ButterflyTopology{
       }
     }
     
+    System.out.println(rank);    
     setUpConnection();
-    
   }
   
   public void setUpConnection(){
+    System.out.println(rank);
   	for(int i = 0; i < numOfProcessor; i++){
   		ProcessorToSwitchLink outgoingCable = new ProcessorToSwitchLink();
   		outgoingCable.incomingEnd = topologySwitchs[0][i];
@@ -41,6 +43,7 @@ public class ButterflyTopology{
   		
   		SwitchToProcessorLink incomingCable = new SwitchToProcessorLink();
   		incomingCable.incomingEnd = processorsArray[i];
+//      System.out.println(rank);
   		incomingCable.outgoingEnd = topologySwitchs[rank - 1][i];
 
       processorsArray[i].addSwitchToProcessorLink(incomingCable);
@@ -110,11 +113,6 @@ public class ButterflyTopology{
 
     col = col ^ number;
     return col;
-  }
-  
-
-  public static void main(String[] args) {
-    System.out.println("All Set");
   }
 }
 
