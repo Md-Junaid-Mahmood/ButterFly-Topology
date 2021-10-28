@@ -17,26 +17,25 @@ public class Switch {
   }
 
   public void acceptMessage(String receiver, String message){
-    if(socket6 != null){
-      socket6.transmit(receiver, message);
-      return;
-    }
-
     char direction = receiver.charAt(0);
     receiver = receiver.substring(1);
-    this.toString();
-    System.out.println("\t" + receiver);
+
+    System.out.print("Switch Visited: ");
+    System.out.println(this.toString());
+
+
+    // System.out.println("\t" + receiver);
     if(direction == '0'){
       outgoingLeft.transmit(receiver, message);
-    }else{
+    }else if(direction == '1'){
       outgoingRight.transmit(receiver, message);
+    }else{
+      socket6.transmit(receiver, message);
+      return;
     }
   }
 
   public String toString(){
-    System.out.println("(" + row + "," + column + ")");
     return "(" + row + "," + column + ")";
   }
-
-
 }

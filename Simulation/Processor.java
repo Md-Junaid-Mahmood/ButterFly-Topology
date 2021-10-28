@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class Processor{
   private int processorID;
   int rank;
@@ -21,11 +19,14 @@ public class Processor{
   }
 
   public String toString(){
-    System.out.println("Pr  " + this.processorID);
     return "Pr  " + this.processorID;
   }
 
   public void send(int receiver, String message){
+    System.out.print("Sender\'s Processor: ");
+    System.out.println(this.toString());
+
+
     String recv = new String("");
     for(int i = 1; i < this.rank; i++){
       recv = recv + "0";
@@ -50,13 +51,32 @@ public class Processor{
       receiver = (int)(receiver / 2);
     }
 
-    this.toString();
-    System.out.println("\t" + recv);
+    recv = recv + "X";
+
+    
+ //   System.out.println("\t" + recv);
     outgoing.transmit(recv, message);
   }
 
   public void receive(String message){
-    this.toString();
+    System.out.print("Receiver\'s Processor: ");
+    System.out.println(this.toString() + " ");
+
+    System.out.print("Message Received: ");
     System.out.println(message);
+  }
+
+  public void broadcast(int num, String message){
+    System.out.println("Starting Broadcast\n");
+    int i = 0;
+    for(i = 0; i < num; i++){
+      if(i == this.processorID){
+        continue;
+      }else{
+        int receiver = i;
+        this.send(receiver, message);
+      }
+      System.out.println("");
+    }
   }
 }

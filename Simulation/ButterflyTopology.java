@@ -25,13 +25,12 @@ public class ButterflyTopology{
         topologySwitchs[i][j] = node;
       }
     }
-    
-    System.out.println(rank);    
+        
     setUpConnection();
+    System.out.println("The topology has " + numOfProcessor + "\nRank of the topology is " + rank);
   }
   
   public void setUpConnection(){
-    System.out.println(rank);
   	for(int i = 0; i < numOfProcessor; i++){
   		ProcessorToSwitchLink outgoingCable = new ProcessorToSwitchLink();
   		outgoingCable.incomingEnd = topologySwitchs[0][i];
