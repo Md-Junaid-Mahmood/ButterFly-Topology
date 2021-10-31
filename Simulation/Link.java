@@ -1,3 +1,3 @@
 public interface Link{
-  public void transmit(String receiver, String message);
+  public void transmit(String receiver, packet p);
 }

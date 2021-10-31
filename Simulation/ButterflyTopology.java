@@ -27,7 +27,7 @@ public class ButterflyTopology{
     }
         
     setUpConnection();
-    System.out.println("The topology has " + numOfProcessor + "\nRank of the topology is " + rank);
+    System.out.println("The topology has " + numOfProcessor + "Processors \nRank of the topology is " + rank);
   }
   
   public void setUpConnection(){

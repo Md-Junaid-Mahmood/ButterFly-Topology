@@ -16,7 +16,7 @@ public class Switch {
     column = c;
   }
 
-  public void acceptMessage(String receiver, String message){
+  public void acceptMessage(String receiver,packet p){
     char direction = receiver.charAt(0);
     receiver = receiver.substring(1);
 
@@ -26,11 +26,11 @@ public class Switch {
 
     // System.out.println("\t" + receiver);
     if(direction == '0'){
-      outgoingLeft.transmit(receiver, message);
+      outgoingLeft.transmit(receiver, p);
     }else if(direction == '1'){
-      outgoingRight.transmit(receiver, message);
+      outgoingRight.transmit(receiver, p);
     }else{
-      socket6.transmit(receiver, message);
+      socket6.transmit(receiver, p);
       return;
     }
   }
