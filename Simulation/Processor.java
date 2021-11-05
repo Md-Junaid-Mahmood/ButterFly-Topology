@@ -22,7 +22,7 @@ public class Processor{
     return "Pr  " + this.processorID;
   }
 
-  public void send(int receiver, packet p){
+  public void send(int receiver, Packet p){
     System.out.print("Sender\'s Processor: ");
     System.out.println(this.toString());
    
@@ -58,7 +58,7 @@ public class Processor{
     outgoing.transmit(recv,p);
   }
 
-  public void receive(packet p){
+  public void receive(Packet p){
     System.out.print("Receiver\'s Processor: ");
     System.out.println(this.toString() + " ");
     String message=p.msg;
@@ -74,7 +74,7 @@ public class Processor{
         continue;
       }else{
         int receiver = i;
-        packet p=new packet(message,num,i);
+        Packet p = new Packet(message,num,i);
         this.send(receiver, p);
       }
       System.out.println("");

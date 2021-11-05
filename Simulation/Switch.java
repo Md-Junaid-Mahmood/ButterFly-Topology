@@ -16,7 +16,7 @@ public class Switch {
     column = c;
   }
 
-  public void acceptMessage(String receiver,packet p){
+  public void acceptMessage(String receiver,Packet p){
     char direction = receiver.charAt(0);
     receiver = receiver.substring(1);
 
