@@ -73,6 +73,9 @@ public class Switch {
     }
 
     System.out.print("Switch Visited: ");
+    for(int i = 0; i < row; i++){
+      System.out.print("\t");
+    }
     System.out.println(this.toString());
 
     Packet leftPacket = new Packet(p.msg, p.sender, p.isBroadcast, leftReceiver);
