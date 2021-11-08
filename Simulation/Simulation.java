@@ -18,7 +18,7 @@ public class Simulation {
         int sender;
         while(true){
           sender = sc.nextInt();
-          if(sender < num)
+          if(sender < num && sender >= 0)
             break;
           else
             System.out.print("(Sender id range is from 0 to " + (num - 1) + " inclusive) please reenter Sender processor: ");
@@ -28,7 +28,7 @@ public class Simulation {
         int receiver;
         while(true){
           receiver = sc.nextInt();
-          if(receiver<num)
+          if(receiver < num && sender >= 0)
             break;
           else
             System.out.print("(Receiver id range is from 0 to "+(num-1) +" inclusive) please reenter Receiver processor:");
@@ -47,7 +47,7 @@ public class Simulation {
         int sender ;
         while(true){
           sender= sc.nextInt();
-          if(sender<num)
+          if(sender < num && sender >= 0)
             break;
           else
             System.out.print("(Sender id range is from 0 to " + (num-1) + " inclusive) please reenter Sender processor:");

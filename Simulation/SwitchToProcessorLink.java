@@ -3,7 +3,6 @@ public class SwitchToProcessorLink implements Link{
   Processor incomingEnd;
 
   public void transmit(String receiver, Packet p){
-    
     incomingEnd.receive(p);
   }
 }
