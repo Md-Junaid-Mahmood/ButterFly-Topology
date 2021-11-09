@@ -1,12 +1,13 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.lang.Thread;
 
 public class Simulation {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
 
-    int optionCount=2, tcCount=5;
+    int optionCount=2, tcCount=-1;
 
     System.out.print("Enter Number of Processor: ");
     int num = sc.nextInt();
@@ -64,6 +65,13 @@ public class Simulation {
           System.out.println("\nEnding Simulation");
           break;
         }
+      }
+
+      // sleep
+      try{
+        Thread.sleep(1000);
+      } catch (Exception e){
+        System.out.println(e);
       }
     }
 
