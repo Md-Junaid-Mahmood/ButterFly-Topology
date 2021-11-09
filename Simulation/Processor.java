@@ -64,12 +64,14 @@ public class Processor{
     String message = p.msg;
     System.out.print("Message Received: ");
     System.out.println(message);
+    System.out.println("\n");
   }
 
   public void broadcast(int num, String message){
     System.out.println("Starting Broadcast\n");
     
     String array[] = new String[num];
+    
     for(int i = 0; i < num; i++){
       if(i == this.processorID){
         array[i] = null;

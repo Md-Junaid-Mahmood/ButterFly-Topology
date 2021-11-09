@@ -21,10 +21,8 @@ public class Switch {
     receiver = receiver.substring(1);
 
     System.out.print("Switch Visited: ");
-
-    for(int i = 0; i < row; i++){
-      System.out.print("\t");
-    }
+    
+    
     System.out.println(this.toString());
 
 
@@ -45,6 +43,7 @@ public class Switch {
 
     String leftReceiver[] = new String[size];
     String rightReceiver[] = new String[size];
+    boolean flag = false;
 
     for(int i = 0; i < size; i++){
       if(p.broadcastReceiver[i] == null){
@@ -52,6 +51,7 @@ public class Switch {
         rightReceiver[i] = null;
         continue;
       }else{
+        flag = true;
         String receiver = new String();
         receiver = p.broadcastReceiver[i];
         char direction = receiver.charAt(0);
@@ -62,20 +62,23 @@ public class Switch {
           rightReceiver[i] = null;
         }else if(direction == '1'){
           rightReceiver[i] = receiver;
-          leftReceiver[i] = receiver;
+          leftReceiver[i] = null;
         }else{
-          socket6.transmit(receiver, p);
           System.out.print("Switch Visited: ");
+          
           System.out.println(this.toString());
+          socket6.transmit(receiver, p);
           return;
         }
       }
     }
 
-    System.out.print("Switch Visited: ");
-    for(int i = 0; i < row; i++){
-      System.out.print("\t");
+    if(!flag){
+      return;
     }
+
+    System.out.print("Switch Visited: ");
+    
     System.out.println(this.toString());
 
     Packet leftPacket = new Packet(p.msg, p.sender, p.isBroadcast, leftReceiver);
